@@ -6,6 +6,9 @@ from geometry_msgs.msg import PoseArray
 from geometry_msgs.msg import Pose
 
 def my_exit():
+    """
+    Simulates a Ctrl+C exit by printing a message and exiting the program.
+    """
     global logger, save_to_file
     print(Fore.RED)
     print('>> Ctrl+C is simulated!')
@@ -14,11 +17,28 @@ def my_exit():
     os._exit(0)
 
 def signal_handler(sig, frame):
+    """
+    Signal handler function that calls the my_exit() function.
+
+    Args:
+        sig: The signal number.
+        frame: The current stack frame.
+    """
     my_exit()
 
 def parse_ros_msg(packet):
-    if (packet != "client_is_ready"):
+    """
+    Parses a packet received from OptiTrack and returns a PoseArray message.
 
+    Args:
+        packet (str): The packet received from OptiTrack.
+
+    Returns:
+        pose_array (PoseArray): A message containing the poses of the rigid bodies
+                                in the packet.
+        False: If the packet is "client_is_ready".
+    """
+    if (packet != "client_is_ready"):
         rev_packet = packet[1:-1]
         rev_packet = rev_packet.split(", ")
         rigid_body_count = int(rev_packet[1])
@@ -52,6 +72,12 @@ def parse_ros_msg(packet):
         return False
 
 def main():
+    """
+    This is the main function that runs the OptiTrack ROS interface node.
+    It initializes the ROS node, reads ROS parameters, creates UDP socket threads,
+    and starts the main loop that listens for incoming UDP packets and publishes
+    the parsed ROS messages to the /Optitrack/PoseArray topic.
+    """
     # to end the program with ctrl+c
     signal.signal(signal.SIGINT, signal_handler)
 
