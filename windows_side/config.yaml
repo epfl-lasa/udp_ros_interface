@@ -1,0 +1,10 @@
+- Subject:
+    subject_number: "1"
+    experiment_trial: "1"
+
+- Storage:
+    rel_parent_dir: "Desktop\\Experiments\\Data"
+
+- DataTransmission:
+    # mode: "streaming_over_network" # solo
+    mode: "record_data_locally" # dyad
