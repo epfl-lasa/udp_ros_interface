@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Dependencies file for the OptiTrack ROS UDP interface node
+# license removed for brevity
+# Maintainers:
+#   - Soheil Gholami (soheiil.gholamii@gmail.com)
+#   - Louis Munier (lmunier@protonmail.com)
+# Update: 2023-09-25
+
 import rospy
 
 from threading import Thread

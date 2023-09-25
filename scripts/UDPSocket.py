@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# Class file for UDPSocket
+# license removed for brevity
+# Maintainers:
+#   - Soheil Gholami (soheiil.gholamii@gmail.com)
+#   - Louis Munier (lmunier@protonmail.com)
+# Update: 2023-09-25
 
 import socket
 from dependencies import *
